@@ -21,8 +21,6 @@ struct UserDataView: View {
                 .foregroundColor(Color(hex: "52b788"))
                 .padding()
                 .scaleEffect(1.2)
-            // test d'animation
-                .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: UUID())
             Spacer()
         }
         .edgesIgnoringSafeArea(.all)

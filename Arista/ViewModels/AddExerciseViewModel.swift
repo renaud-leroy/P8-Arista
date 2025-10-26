@@ -16,14 +16,16 @@ class AddExerciseViewModel: ObservableObject {
     @Published var errorMessage: String? = nil
     
     private var viewContext: NSManagedObjectContext
+    private var repository: ExerciseRepositoryProtocol
     
-    init(context: NSManagedObjectContext) {
+    init(context: NSManagedObjectContext,
+         repository: ExerciseRepositoryProtocol? = nil) {
         self.viewContext = context
-    }
+        self.repository = repository ?? ExerciseRepository(viewContext: context)    }
     
     func addExercise() -> Bool {
         do {
-            try ExerciseRepository(viewContext: viewContext).addExercise(
+            try repository.addExercise(
                 category: category,
                 duration: duration,
                 intensity: intensity,

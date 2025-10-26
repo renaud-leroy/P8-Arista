@@ -31,11 +31,9 @@ struct AristaApp: App {
                     .tabItem {
                         Label("Sommeil", systemImage: "moon")
                     }
-                
             }
             .accentColor(Color(hex: "52b788"))
             .environment(\.managedObjectContext, persistenceController.container.viewContext)
-
         }
     }
 }

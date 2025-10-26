@@ -13,15 +13,17 @@ class ExerciseListViewModel: ObservableObject {
     @Published var errorMessage: ExerciseError?
     
     var viewContext: NSManagedObjectContext
+    private var repository: ExerciseRepositoryProtocol
     
-    init(context: NSManagedObjectContext) {
-        self.viewContext = context
-        fetchExercises()
-    }
+    init(context: NSManagedObjectContext, repository: ExerciseRepositoryProtocol? = nil) {
+            self.viewContext = context
+            self.repository = repository ?? ExerciseRepository(viewContext: context)
+            fetchExercises()
+        }
+    
     func fetchExercises() {
         do {
-            let data = ExerciseRepository(viewContext: viewContext)
-            exercises = try data.getExercise()
+            exercises = try repository.getExercise()
         } catch {
             errorMessage = .fetchExerciseFailed
             exercises = []
@@ -29,8 +31,6 @@ class ExerciseListViewModel: ObservableObject {
     }
     
     func removeExercise(at indexSet: IndexSet) {
-        let repository = ExerciseRepository(viewContext: viewContext)
-        
         guard let index = indexSet.first, exercises.indices.contains(index) else {
             return
         }

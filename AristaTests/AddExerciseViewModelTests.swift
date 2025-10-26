@@ -145,6 +145,27 @@ final class AddExerciseViewModelTests: XCTestCase {
         let repository = ExerciseRepository(viewContext: context)
         let exercises = try! repository.getExercise()
         
-        XCTAssertEqual(exercises.count, 1) 
+        XCTAssertEqual(exercises.count, 1)
+    }
+    
+    func test_addExercise_returnsFalse_whenRepositoryThrowsError() {
+        // Given
+        let mockRepo = MockExerciseRepository()
+        mockRepo.shouldThrowErrorForAdd = true
+        
+        let viewModelWithMock = AddExerciseViewModel(context: context, repository: mockRepo)
+        viewModelWithMock.category = .football
+        viewModelWithMock.duration = 60
+        viewModelWithMock.intensity = 5
+        viewModelWithMock.startTime = Date()
+        
+        // When
+        let success = viewModelWithMock.addExercise()
+        
+        // Then
+        XCTAssertFalse(success)
+        XCTAssertNotNil(viewModelWithMock.errorMessage)
+        XCTAssertTrue(viewModelWithMock.errorMessage!.contains("Failed to add exercise"))
+      
     }
 }
