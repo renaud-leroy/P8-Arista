@@ -39,5 +39,6 @@ Ce projet m’a permis de pratiquer la persistence locale, l’architecture MVVM
 
 ## Captures d’écran
 
-<img width="546" height="1063" alt="CleanShot 2025-12-04 at 02 33 54@2x" src="https://github.com/user-attachments/assets/015bec31-d91b-4690-842b-fbefd5364b84" />
-<img width="546" height="1063" alt="CleanShot 2025-12-04 at 02 35 10@2x" src="https://github.com/user-attachments/assets/c2aa7f36-d0dc-4811-a9b5-68e5d8f736a9" />
+<img width="402" height="874" alt="Simulator Screenshot - iPhone 17 - 2025-12-04 at 02 28 29" src="https://github.com/user-attachments/assets/d0898103-f361-4472-843a-a06232c02729" />
+<img width="402" height="874" alt="Simulator Screenshot - iPhone 17 - 2025-12-04 at 02 28 44" src="https://github.com/user-attachments/assets/84882c02-4622-428a-a183-7432bd0c586b" />
+
